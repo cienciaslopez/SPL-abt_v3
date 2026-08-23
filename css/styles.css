@@ -314,45 +314,58 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   SPEED DIAL / DOCK FLOTANTE DESPLEGABLE EN HOVER (COMPACTO)
+   SPEED DIAL / DOCK FLOTANTE EN ARCO (CUARTO DE CÍRCULO, DESPLEGABLE EN HOVER)
    ========================================================================== */
 .speed-dial-container {
   transition: all 0.3s ease;
 }
 
+/* Wrapper puramente semántico: los hijos se posicionan de forma absoluta
+   respecto a .speed-dial-container (que es position:fixed). */
 .speed-dial-menu {
-  opacity: 0 !important;
-  visibility: hidden !important;
-  transform: translateY(12px) scale(0.85);
-  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
-              transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
-              visibility 0.25s;
+  position: static;
+}
+
+/* Estado de reposo: cada botón colapsado exactamente sobre el matraz,
+   invisible y a mitad de tamaño. --dx / --dy vienen del atributo style
+   inline de cada botón y definen su posición final en el arco. */
+.speed-dial-sub-btn {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(0, 0) scale(0.4);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              opacity 0.2s ease,
+              visibility 0.2s,
+              box-shadow 0.2s ease;
   pointer-events: none;
 }
 
-/* Al pasar el cursor por encima del botón (Hover) o hacer foco */
-.speed-dial-container:hover .speed-dial-menu,
-.speed-dial-container:focus-within .speed-dial-menu {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: translateY(0) scale(1);
+/* Al pasar el cursor por el contenedor (o hacer foco), cada botón viaja
+   a su posición en el arco (arriba → arriba-izq → izq-arriba → izquierda). */
+.speed-dial-container.is-open .speed-dial-sub-btn {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(var(--dx), var(--dy)) scale(1);
   pointer-events: auto;
 }
 
-.speed-dial-container.is-open .speed-dial-sub-btn {
+/* Efecto "pop" al pasar el cursor sobre un botón ya desplegado,
+   manteniendo su posición en el arco (no vuelve a colapsarse). */
+.speed-dial-sub-btn:hover {
+  transform: translate(var(--dx), var(--dy)) scale(1.15) !important;
+  z-index: 5;
+}
+
+.speed-dial-container.is-open .speed-dial-main-btn i {
   transform: rotate(18deg) scale(1.1);
 }
 
-/* Cierre forzado tras elegir una opción (anula el :hover mientras el cursor no se mueva) */
-.speed-dial-container.is-force-hidden .speed-dial-menu {
+/* Cierre forzado tras elegir una opción (anula el hover mientras el cursor no se mueva) */
+.speed-dial-container.is-force-hidden .speed-dial-sub-btn {
   opacity: 0 !important;
   visibility: hidden !important;
-  transform: translateY(12px) scale(0.85) !important;
+  transform: translate(0, 0) scale(0.4) !important;
   pointer-events: none !important;
-}
-
-.speed-dial-sub-btn {
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
 }
 
 .fab-btn:hover {
