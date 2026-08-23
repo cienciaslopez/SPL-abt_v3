@@ -1,0 +1,674 @@
+/* ==========================================================================
+   SISTEMA DE DISEÑO DE ALTO RENDIMIENTO — AULAIA POPJUBO 2026-2027 (v3.1)
+   Drawer Izquierdo Responsive, FABs Circulares, Modo Proyector y Cartas 3D
+   Prof. Steve Polanco López | Politécnico Prof. Juan Emilio Bosch Gaviño
+   ========================================================================== */
+
+:root {
+  --popjubo-blue: #002b5c;
+  --popjubo-blue-dark: #001833;
+  --popjubo-accent: #0284c7;
+  --popjubo-yellow: #f59e0b;
+  --popjubo-red: #dc2626;
+  --popjubo-green: #10b981;
+  --bg-main: #0b1329;
+  --bg-card: #132247;
+  --bg-card-hover: #1a2f63;
+  --text-primary: #ffffff;
+  --text-secondary: #e2e8f0;
+  --text-muted: #cbd5e1;
+  --border-color: #2a437e;
+  --border-highlight: #38bdf8;
+  --font-base: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Poppins', system-ui, sans-serif;
+  --base-font-size: 16px;
+}
+
+/* ==========================================================================
+   MODO CLARO (LIGHT THEME)
+   ========================================================================== */
+body.light-theme {
+  --bg-main: #f8fafc !important;
+  --bg-card: #ffffff !important;
+  --bg-card-hover: #f1f5f9 !important;
+  --text-primary: #0f172a !important;
+  --text-secondary: #334155 !important;
+  --text-muted: #64748b !important;
+  --border-color: #cbd5e1 !important;
+  --border-highlight: #0284c7 !important;
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+body.light-theme .glass-panel,
+body.light-theme .card-high-contrast {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
+}
+
+body.light-theme .card-flip-front {
+  background: linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%) !important;
+  color: #0f172a !important;
+  border-color: #0284c7 !important;
+}
+
+body.light-theme .card-flip-back {
+  background: linear-gradient(145deg, #f0fdf4 0%, #dcfce7 100%) !important;
+  color: #0f172a !important;
+  border-color: #10b981 !important;
+}
+
+body.light-theme .drawer-sidebar {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border-right-color: #0284c7 !important;
+}
+
+/* ==========================================================================
+   MODO PROYECTOR DE ULTRA ALTO CONTRASTE (Low-Lumen Classroom Mode)
+   ========================================================================== */
+body.projector-mode {
+  --bg-main: #000000 !important;
+  --bg-card: #050b1a !important;
+  --bg-card-hover: #0d1933 !important;
+  --text-primary: #ffffff !important;
+  --text-secondary: #fef08a !important;
+  --text-muted: #f1f5f9 !important;
+  --border-color: #facc15 !important;
+  --border-highlight: #38bdf8 !important;
+  --base-font-size: 20px !important;
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+body.projector-mode .glass-panel,
+body.projector-mode .card-high-contrast {
+  background: #060d21 !important;
+  border: 3px solid #38bdf8 !important;
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.25) !important;
+}
+
+/* Botón Proyector Activo con Animación */
+.projector-btn-active {
+  border-color: #facc15 !important;
+  background: #713f12 !important;
+  box-shadow: 0 0 15px rgba(250, 204, 21, 0.6) !important;
+  animation: pulseProyector 2s infinite ease-in-out;
+}
+
+@keyframes pulseProyector {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 10px rgba(250, 204, 21, 0.4); }
+  50% { transform: scale(1.06); box-shadow: 0 0 20px rgba(250, 204, 21, 0.8); }
+}
+
+/* ==========================================================================
+   BASE & RESET
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--base-font-size);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-base);
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, font-size 0.2s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: 0;
+}
+
+/* ==========================================================================
+   PANELES Y TARJETAS
+   ========================================================================== */
+.glass-panel {
+  background: rgba(19, 34, 71, 0.95);
+  border: 2px solid var(--border-color);
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.card-high-contrast {
+  background: #111e3f;
+  border: 2px solid #2a437e;
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+  color: #ffffff;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-high-contrast:hover {
+  transform: translateY(-2px);
+  border-color: #38bdf8;
+  box-shadow: 0 8px 25px rgba(2, 132, 199, 0.25);
+}
+
+/* ==========================================================================
+   TRANSICIÓN SUAVE DE SECCIONES (SPA)
+   ========================================================================== */
+@keyframes sectionFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-section {
+  display: none;
+}
+
+.slide-section.active {
+  display: block;
+  animation: sectionFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   CARTAS FLIP 3D DEL ECOSISTEMA (OPTIMIZADAS)
+   ========================================================================== */
+.card-flip-container {
+  perspective: 1200px;
+  height: 390px;
+  width: 100%;
+}
+
+.card-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+  cursor: pointer;
+  border-radius: 1.25rem;
+}
+
+.card-flip-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.card-flip-front,
+.card-flip-back {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  transform: translateZ(0);
+}
+
+.card-flip-front {
+  background: linear-gradient(145deg, #0f1c3d 0%, #08122c 100%);
+  color: #ffffff;
+  border: 3px solid #38bdf8;
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+.card-flip-back {
+  background: linear-gradient(145deg, #082f49 0%, #031526 100%);
+  color: #ffffff;
+  border: 3px solid #facc15;
+  transform: rotateY(180deg) translateZ(1px);
+  z-index: 1;
+}
+
+/* ==========================================================================
+   DRAWER / MENÚ LATERAL IZQUIERDO RESPONSIVE AL ZOOM
+   ========================================================================== */
+.drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  z-index: 998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.drawer-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 90vw;
+  max-width: 440px;
+  height: 100vh;
+  background: #09132b;
+  border-right: 3px solid #38bdf8;
+  border-left: none;
+  z-index: 999;
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 10px 0 40px rgba(0, 0, 0, 0.8);
+  overflow-y: auto;
+}
+
+.drawer-backdrop.open .drawer-sidebar {
+  transform: translateX(0);
+}
+
+.drawer-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem 0.9rem;
+  border-radius: 0.75rem;
+  color: #e2e8f0;
+  font-weight: 700;
+  font-size: 0.88rem;
+  background: #0f1c3d;
+  border: 1px solid #2a437e;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  text-align: left;
+}
+
+.drawer-nav-item:hover {
+  background: #1e356e;
+  border-color: #38bdf8;
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+.drawer-nav-item.active {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  border-color: #7dd3fc;
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+}
+
+/* ==========================================================================
+   SPEED DIAL / DOCK FLOTANTE DESPLEGABLE EN HOVER (COMPACTO)
+   ========================================================================== */
+.speed-dial-container {
+  transition: all 0.3s ease;
+}
+
+.speed-dial-menu {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateY(12px) scale(0.85);
+  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+              visibility 0.25s;
+  pointer-events: none;
+}
+
+/* Al pasar el cursor por encima del botón (Hover) o hacer foco */
+.speed-dial-container:hover .speed-dial-menu,
+.speed-dial-container:focus-within .speed-dial-menu {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.speed-dial-container:hover .speed-dial-main-btn i,
+.speed-dial-container:focus-within .speed-dial-main-btn i {
+  transform: rotate(18deg) scale(1.1);
+}
+
+/* Cierre forzado tras elegir una opción (anula el :hover mientras el cursor no se mueva) */
+.speed-dial-container.is-force-hidden .speed-dial-menu {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateY(12px) scale(0.85) !important;
+  pointer-events: none !important;
+}
+
+.speed-dial-sub-btn {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+}
+
+.fab-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
+}
+
+/* ==========================================================================
+   ANIMACIONES DE TRIVIAS STEAM
+   ========================================================================== */
+@keyframes triviaPopIn {
+  0% { opacity: 0; transform: scale(0.94) translateY(12px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.trivia-animated-card {
+  animation: triviaPopIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes correctGlow {
+  0% { transform: scale(1); box-shadow: 0 0 0 rgba(16, 185, 129, 0.4); }
+  50% { transform: scale(1.02); box-shadow: 0 0 25px rgba(16, 185, 129, 0.8); }
+  100% { transform: scale(1); box-shadow: 0 0 15px rgba(16, 185, 129, 0.5); }
+}
+
+@keyframes incorrectShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+.quiz-option-btn {
+  width: 100%;
+  text-align: left;
+  padding: 1rem 1.25rem;
+  border: 3px solid #2a437e;
+  border-radius: 1rem;
+  background: #0f1c3d;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.quiz-option-btn:hover {
+  background: #1e356e;
+  border-color: #38bdf8;
+  transform: translateX(4px);
+}
+
+.quiz-option-btn.correct {
+  background: #064e3b !important;
+  border-color: #10b981 !important;
+  animation: correctGlow 0.5s ease;
+}
+
+.quiz-option-btn.incorrect {
+  background: #7f1d1d !important;
+  border-color: #ef4444 !important;
+  animation: incorrectShake 0.4s ease;
+}
+
+/* ==========================================================================
+   RULETA DE ESTUDIANTES (CANVAS)
+   ========================================================================== */
+.roulette-container {
+  position: relative;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+#roulette-canvas {
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  border-radius: 50%;
+  border: 8px solid #facc15;
+  box-shadow: 0 0 35px rgba(250, 204, 21, 0.4);
+  background: #ffffff;
+}
+
+.roulette-pointer {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 36px solid #ef4444;
+  z-index: 20;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
+}
+
+/* ==========================================================================
+   CHECKLIST & TEMPORIZADOR
+   ========================================================================== */
+.task-item {
+  background: #132247;
+  border: 2px solid #253966;
+  border-radius: 0.85rem;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.task-item:hover {
+  border-color: #38bdf8;
+  background: #192c5c;
+}
+
+.task-item.completed {
+  background: #062e22;
+  border-color: #10b981;
+}
+
+.task-checkbox-custom {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.35rem;
+  accent-color: #10b981;
+  cursor: pointer;
+}
+
+.timer-display {
+  font-family: monospace;
+  font-size: 2.75rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #facc15;
+  text-shadow: 0 0 15px rgba(250, 204, 21, 0.4);
+}
+
+/* ==========================================================================
+   BOTONES
+   ========================================================================== */
+.btn-primary {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  border: 2px solid #7dd3fc;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  padding: 0.6rem 1.15rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  border-color: #ffffff;
+}
+
+.btn-accent {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #000000;
+  border: 2px solid #fef08a;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  padding: 0.6rem 1.15rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+}
+
+.btn-accent:hover {
+  transform: scale(1.03);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: #ffffff;
+  border: 2px solid #fca5a5;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  padding: 0.6rem 1.15rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+}
+
+/* ==========================================================================
+   MODALES
+   ========================================================================== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.25rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.modal-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content-box {
+  background: #0d1938;
+  border: 3px solid #38bdf8;
+  border-radius: 1.5rem;
+  width: 100%;
+  max-width: 840px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 1.75rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+  transform: scale(0.96);
+  transition: transform 0.25s ease;
+  
+}
+
+.modal-backdrop.open .modal-content-box {
+  transform: scale(1);
+}
+
+/* ==========================================================================
+   ESTILOS DE IMPRESIÓN ESTÁNDAR FORMATO POLANCO (HOJA TIMBRADA POPJUBO)
+   Garantiza 0% fondos oscuros y 100% hoja blanca con encabezado institucional
+   ========================================================================== */
+@page {
+  size: letter portrait;
+  margin: 1.2cm 1.5cm 1.2cm 1.5cm;
+}
+
+@media print {
+  html, body {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    font-family: 'Times New Roman', Times, serif !important;
+    font-size: 11pt !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Ocultar toda la interfaz de pantalla */
+  header, nav, aside, #hamburger-drawer, .no-print, .modal-backdrop, 
+  .btn-primary, .btn-accent, .btn-danger, .speed-dial-container, .fab-btn, 
+  #students-table-container, .task-item, .card-high-contrast:not(:has(.active-print-target)) {
+    display: none !important;
+  }
+
+  .slide-section {
+    display: block !important;
+    background: transparent !important;
+  }
+
+  .card-high-contrast:has(.active-print-target) {
+    display: block !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .printable-day-sheet.active-print-target {
+    display: block !important;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    page-break-inside: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  .printable-day-sheet * {
+    color: #000000 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .printable-day-sheet table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 8px 0 !important;
+  }
+
+  .printable-day-sheet table td,
+  .printable-day-sheet table th {
+    border: 1px solid #000000 !important;
+    padding: 4px 8px !important;
+  }
+
+  .printable-day-sheet .border-b-2 {
+    border-bottom: 2px solid #1e40af !important;
+  }
+
+  .printable-day-sheet .border-t {
+    border-top: 1px solid #000000 !important;
+  }
+}

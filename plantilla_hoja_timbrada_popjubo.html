@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plantilla Oficial Hoja Timbrada — Politécnico Prof. Juan Emilio Bosch Gaviño</title>
+  
+  <style>
+    /* ==========================================================================
+       ESTÁNDAR DE FORMATO POLANCO — HOJA TIMBRADA OFICIAL POPJUBO (MINERD)
+       Norma de Formato para Documentos, Exámenes, Informes y Proyectos AulaIA
+       ========================================================================== */
+    
+    @page {
+      size: letter portrait;
+      margin: 1.5cm 1.8cm 1.5cm 1.8cm;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 12pt;
+      line-height: 1.5;
+      color: #000000;
+      background-color: #f1f5f9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .document-page {
+      background: #ffffff;
+      width: 21.59cm;
+      min-height: 27.94cm;
+      margin: 0 auto 30px auto;
+      padding: 1.8cm 2cm;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* ENCABEZADO TIMBRADO OFICIAL */
+    .header-timbrado {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid #1e40af; /* Azul Institucional MINERD */
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+
+    .header-logo-minerd {
+      width: 85px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .header-logo-politecnico {
+      width: 75px;
+      height: auto;
+      object-fit: contain;
+      border: 1px solid #cbd5e1;
+      padding: 2px;
+      border-radius: 4px;
+    }
+
+    .header-text-center {
+      text-align: center;
+      flex: 1;
+      padding: 0 15px;
+    }
+
+    .header-text-center h2 {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 13pt;
+      font-weight: bold;
+      color: #000000;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      line-height: 1.25;
+    }
+
+    .header-text-center h3 {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 11.5pt;
+      font-weight: bold;
+      color: #1e40af;
+      margin: 2px 0 0 0;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+
+    .header-text-center p {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 9.5pt;
+      color: #334155;
+      margin: 3px 0 0 0;
+      line-height: 1.2;
+    }
+
+    /* CONTENIDO DEL DOCUMENTO */
+    .document-body {
+      flex: 1;
+    }
+
+    .doc-title {
+      text-align: center;
+      font-size: 14pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #000000;
+      margin: 15px 0 10px 0;
+    }
+
+    .doc-subtitle {
+      text-align: center;
+      font-size: 11pt;
+      font-weight: bold;
+      color: #1e40af;
+      margin-bottom: 20px;
+    }
+
+    /* TABLAS ESTILO POLANCO */
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      font-size: 11pt;
+    }
+
+    table.data-table th, 
+    table.data-table td {
+      border: 1px solid #000000;
+      padding: 6px 10px;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    table.data-table th {
+      background-color: #f1f5f9;
+      font-weight: bold;
+      color: #000000;
+    }
+
+    /* PIE DE PÁGINA TIMBRADO OFICIAL */
+    .footer-timbrado {
+      border-top: 2px solid #1e40af;
+      padding-top: 8px;
+      margin-top: 25px;
+      text-align: center;
+      font-size: 9pt;
+      color: #475569;
+      line-height: 1.3;
+    }
+
+    .no-print-bar {
+      max-width: 21.59cm;
+      margin: 0 auto 15px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn-print {
+      background-color: #1e40af;
+      color: #ffffff;
+      padding: 8px 18px;
+      border: none;
+      border-radius: 6px;
+      font-family: sans-serif;
+      font-weight: bold;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    @media print {
+      body {
+        background-color: #ffffff !important;
+        padding: 0 !important;
+      }
+      .no-print-bar {
+        display: none !important;
+      }
+      .document-page {
+        box-shadow: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        min-height: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Barra de Acciones Superior (No se imprime) -->
+  <div class="no-print-bar">
+    <span style="font-family: sans-serif; font-size: 12px; color: #475569;">
+      <strong>AulaIA</strong> • Plantilla de Hoja Timbrada Oficial (Politécnico Juan Bosch)
+    </span>
+    <button onclick="window.print()" class="btn-print">🖨️ Imprimir / Guardar en PDF</button>
+  </div>
+
+  <!-- Página del Documento -->
+  <div class="document-page">
+    
+    <div>
+      <!-- ENCABEZADO TIMBRADO EXACTO HOJA POPJUBO -->
+      <header class="header-timbrado">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Logo_del_Ministerio_de_Educaci%C3%B3n_%28Rep%C3%BAblica_Dominicana%29.svg/1280px-Logo_del_Ministerio_de_Educaci%C3%B3n_%28Rep%C3%BAblica_Dominicana%29.svg.png" 
+             alt="Logo MINERD" class="header-logo-minerd">
+        
+        <div class="header-text-center">
+          <h2>REPÚBLICA DOMINICANA</h2>
+          <h2>MINISTERIO DE EDUCACIÓN (MINERD)</h2>
+          <h3>DISTRITO EDUCATIVO 06-07 DE GASPAR HERNÁNDEZ</h3>
+          <h3>POLITÉCNICO PROF. JUAN EMILIO BOSCH GAVIÑO</h3>
+          <p>Calle La Escuela, Barrio Candor, Código 15228</p>
+        </div>
+
+        <img src="https://i.postimg.cc/qqPntZPr/LOGO-del-POLITECNICO.jpg" 
+             alt="Logo Politécnico" class="header-logo-politecnico">
+      </header>
+
+      <!-- CUERPO DEL DOCUMENTO -->
+      <div class="document-body">
+        <div class="doc-title">[TÍTULO DEL DOCUMENTO / INFORME / EVALUACIÓN]</div>
+        <div class="doc-subtitle">[Subtítulo o Cátedra: Ciencias de la Naturaleza • Prof. Steve Polanco López]</div>
+
+        <!-- Tabla de Datos Generales -->
+        <table class="data-table">
+          <tr>
+            <td width="50%"><strong>Estudiante:</strong> _____________________________________</td>
+            <td width="25%"><strong>N° Lista:</strong> ______</td>
+            <td width="25%"><strong>Grado/Secc:</strong> 3ro C</td>
+          </tr>
+          <tr>
+            <td><strong>Docente:</strong> Prof. Steve Polanco López</td>
+            <td><strong>Fecha:</strong> ____/____/2026</td>
+            <td><strong>Período:</strong> P1 (2026-2027)</td>
+          </tr>
+        </table>
+
+        <!-- Sección de Contenido de Ejemplo -->
+        <div style="margin-top: 20px;">
+          <p><strong>INSTRUCCIONES:</strong> Este espacio está normalizado para la redacción de informes técnicos, proyectos STEAM, guías de laboratorio o instrumentos de evaluación estandarizados del ecosistema AulaIA.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PIE DE PÁGINA TIMBRADO OFICIAL -->
+    <footer class="footer-timbrado">
+      C/ La Escuela #03 Barrio Candor, Teléfono: 809-587-2850 • Correo Institucional: politecnicopjuanboschgh@gmail.com
+    </footer>
+
+  </div>
+
+</body>
+</html>
