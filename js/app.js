@@ -106,31 +106,21 @@ function updateProjectorBtnUI(isProjector) {
   }
 }
 
-/* ==========================================================================
-   GESTIÓN DE MODALES FLOTANTES (RULETA, EQUIPOS, ROMPEHIELOS, CRONÓMETRO)
-   ========================================================================== */
-/**
- * Oculta el dial flotante (matraz) de inmediato al elegir una de sus opciones,
- * sin esperar a que el cursor salga del botón. Se re-habilita el hover normal
- * en cuanto el mouse abandona el contenedor (o tras 3s en dispositivos táctiles).
- */
 function collapseSpeedDial() {
-  const container = document.querySelector('.speed-dial-container');
-  if (!container) return;
-
-  if (document.activeElement && container.contains(document.activeElement)) {
-    document.activeElement.blur();
-  }
-
-  container.classList.add('is-force-hidden');
-
-  const release = () => {
-    container.classList.remove('is-force-hidden');
-    container.removeEventListener('mouseleave', release);
-  };
-  container.addEventListener('mouseleave', release);
-  setTimeout(release, 3000);
+  document.querySelector('.speed-dial-container')?.classList.remove('is-open');
 }
+
+function toggleSpeedDial(event) {
+  event.stopPropagation();
+  document.querySelector('.speed-dial-container')?.classList.toggle('is-open');
+}
+
+document.addEventListener('click', (e) => {
+  const container = document.querySelector('.speed-dial-container');
+  if (container && !container.contains(e.target)) {
+    container.classList.remove('is-open');
+  }
+});
 
 function openRouletteModal() {
   const modal = document.getElementById('roulette-modal');
