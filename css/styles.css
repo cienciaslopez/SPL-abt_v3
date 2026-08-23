@@ -48,12 +48,6 @@ body.light-theme .card-high-contrast {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
 }
 
-body.light-theme .card-flip-front {
-  background: linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%) !important;
-  color: #0f172a !important;
-  border-color: #0284c7 !important;
-}
-
 body.light-theme .card-flip-back {
   background: linear-gradient(145deg, #f0fdf4 0%, #dcfce7 100%) !important;
   color: #0f172a !important;
@@ -65,6 +59,190 @@ body.light-theme .drawer-sidebar {
   color: #0f172a !important;
   border-right-color: #0284c7 !important;
 }
+
+/* ==========================================================================
+   MODO CLARO — COBERTURA AMPLIADA
+   El sitio usa clases de Tailwind fijas (text-white, bg-slate-900, etc.) en
+   vez de las variables de tema, así que no responden solas al cambio de
+   modo. Aquí se sobreescriben explícitamente. Paleta recuperada de la
+   versión vanilla original: popjubo-blue (#003366 / #0284c7 acento) y
+   popjubo-red (#cc0000).
+   ========================================================================== */
+
+/* --- Encabezado (antes se quedaba fijo en oscuro) --- */
+body.light-theme header {
+  background-color: #ffffff !important;
+  border-bottom-color: #cbd5e1 !important;
+}
+body.light-theme header h1 {
+  color: #0f172a !important;
+}
+body.light-theme header .text-cyan-400 {
+  color: #0369a1 !important;
+}
+
+/* --- Paneles neutros oscuros (drawer, modales, tabs, inputs, badges) --- */
+body.light-theme [class*="bg-slate-950"],
+body.light-theme [class*="bg-slate-900"],
+body.light-theme [class*="bg-slate-800"],
+body.light-theme [class*="bg-slate-700"] {
+  background-color: #eef2f7 !important;
+}
+body.light-theme [class*="border-slate-800"],
+body.light-theme [class*="border-slate-700"],
+body.light-theme [class*="border-slate-600"] {
+  border-color: #cbd5e1 !important;
+}
+body.light-theme [class*="text-slate-100"],
+body.light-theme [class*="text-slate-200"],
+body.light-theme [class*="text-slate-300"],
+body.light-theme [class*="text-slate-400"] {
+  color: #334155 !important;
+}
+
+/* --- Texto blanco: oscuro por defecto; blanco solo sobre fondos vívidos
+       (gradientes y badges de color, donde el blanco sigue siendo correcto) --- */
+body.light-theme .text-white {
+  color: #0f172a !important;
+}
+body.light-theme [class*="bg-gradient-to-"].text-white,
+body.light-theme .bg-emerald-600.text-white,
+body.light-theme .bg-emerald-700.text-white,
+body.light-theme .bg-red-600.text-white,
+body.light-theme .bg-indigo-600.text-white,
+body.light-theme .bg-blue-600.text-white,
+body.light-theme .bg-blue-900.text-white,
+body.light-theme .badge-high-contrast.text-white,
+body.light-theme .drawer-tab-btn.active.text-white,
+body.light-theme .quiz-option-btn.correct,
+body.light-theme .quiz-option-btn.incorrect {
+  color: #ffffff !important;
+}
+
+/* --- Componentes cuyo fondo oscuro vive en su propia clase CSS (no Tailwind) --- */
+body.light-theme .modal-content-box {
+  background: #ffffff !important;
+  border-color: #0284c7 !important;
+  color: #0f172a !important;
+}
+body.light-theme .drawer-nav-item {
+  background: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+body.light-theme .drawer-nav-item:hover {
+  background: #e0f2fe !important;
+  border-color: #0284c7 !important;
+  color: #0f172a !important;
+}
+body.light-theme .drawer-nav-item.active {
+  background: linear-gradient(135deg, #003366 0%, #0284c7 100%) !important;
+  border-color: #0284c7 !important;
+  color: #ffffff !important;
+}
+body.light-theme .task-item {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+body.light-theme .task-item:hover {
+  background: #f8fafc !important;
+  border-color: #0284c7 !important;
+}
+body.light-theme .task-item.completed {
+  background: #f0fdf4 !important;
+  border-color: #10b981 !important;
+}
+body.light-theme .quiz-option-btn {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+body.light-theme .quiz-option-btn:hover {
+  background: #f0f9ff !important;
+  border-color: #0284c7 !important;
+}
+
+/* --- Acentos brillantes (300-400, y algunos 200) pensados para fondo
+       oscuro: se oscurecen por defecto en modo claro. Excepción: cuando
+       viven dentro de su propia chapa oscura y saturada (bg-*-900/950 o
+       gradientes), donde el texto brillante sigue siendo necesario. --- */
+body.light-theme [class*="text-cyan-200"],
+body.light-theme [class*="text-cyan-300"],
+body.light-theme [class*="text-cyan-400"] {
+  color: #0369a1 !important;
+}
+body.light-theme [class*="text-yellow-300"],
+body.light-theme [class*="text-yellow-400"] {
+  color: #92400e !important;
+}
+body.light-theme [class*="text-blue-200"] {
+  color: #1d4ed8 !important;
+}
+body.light-theme [class*="text-emerald-200"],
+body.light-theme [class*="text-emerald-300"],
+body.light-theme [class*="text-emerald-400"] {
+  color: #047857 !important;
+}
+body.light-theme [class*="text-teal-400"] {
+  color: #0f766e !important;
+}
+body.light-theme [class*="text-green-200"] {
+  color: #15803d !important;
+}
+body.light-theme [class*="text-red-200"],
+body.light-theme [class*="text-red-300"],
+body.light-theme [class*="text-red-400"] {
+  color: #b91c1c !important;
+}
+body.light-theme [class*="text-amber-200"],
+body.light-theme [class*="text-amber-300"],
+body.light-theme [class*="text-amber-400"] {
+  color: #92400e !important;
+}
+body.light-theme [class*="text-indigo-400"] {
+  color: #4338ca !important;
+}
+
+/* Reversión: acentos que viven sobre su propia chapa oscura y saturada
+   (siguen necesitando texto brillante, sin importar el modo) */
+body.light-theme [class*="bg-yellow-950"] [class*="text-yellow-300"],
+body.light-theme [class*="bg-yellow-950"].text-yellow-300,
+body.light-theme [class*="bg-amber-950"] [class*="text-yellow-300"],
+body.light-theme [class*="bg-amber-950"].text-yellow-300,
+body.light-theme [class*="bg-cyan-900"] [class*="text-cyan-300"],
+body.light-theme [class*="bg-cyan-900"].text-cyan-300,
+body.light-theme [class*="bg-emerald-950"][class*="text-emerald-300"],
+body.light-theme [class*="bg-amber-950"][class*="text-amber-300"],
+body.light-theme .badge-high-contrast[class*="text-yellow-300"] {
+  color: #fde047 !important;
+}
+body.light-theme [class*="bg-gradient-to-"][class*="text-yellow-300"] {
+  color: #fde047 !important;
+}
+body.light-theme [class*="bg-gradient-to-"][class*="text-cyan-300"] {
+  color: #67e8f9 !important;
+}
+
+/* ==========================================================================
+   EXCEPCIÓN — EL FRENTE DE LAS CARTAS NO CAMBIA EN NINGÚN MODO
+   (según lo pedido: ya se ve bien tal cual, se revierte cualquier regla
+   amplia de arriba que lo hubiera tocado)
+   ========================================================================== */
+body.light-theme .card-flip-front {
+  background: linear-gradient(145deg, #0f1c3d 0%, #08122c 100%) !important;
+  color: #ffffff !important;
+}
+body.light-theme .card-flip-front .text-white,
+body.light-theme .card-flip-front h3 {
+  color: #ffffff !important;
+}
+body.light-theme .card-flip-front .text-cyan-300 { color: #67e8f9 !important; }
+body.light-theme .card-flip-front .text-yellow-400 { color: #facc15 !important; }
+body.light-theme .card-flip-front [class*="text-slate-300"] { color: #cbd5e1 !important; }
+body.light-theme .card-flip-front [class*="bg-slate-950"] { background-color: rgba(2,6,23,0.85) !important; }
+body.light-theme .card-flip-front [class*="border-slate-700"] { border-color: #334155 !important; }
+body.light-theme .card-flip-front [class*="bg-slate-800"] { background-color: #1e293b !important; }
 
 /* ==========================================================================
    MODO PROYECTOR DE ULTRA ALTO CONTRASTE (Low-Lumen Classroom Mode)
@@ -342,7 +520,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Al pasar el cursor por el contenedor (o hacer foco), cada botón viaja
    a su posición en el arco (arriba → arriba-izq → izq-arriba → izquierda). */
-.speed-dial-container.is-open .speed-dial-sub-btn {
+.speed-dial-container:hover .speed-dial-sub-btn,
+.speed-dial-container:focus-within .speed-dial-sub-btn {
   opacity: 1;
   visibility: visible;
   transform: translate(var(--dx), var(--dy)) scale(1);
@@ -356,7 +535,8 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 5;
 }
 
-.speed-dial-container.is-open .speed-dial-main-btn i {
+.speed-dial-container:hover .speed-dial-main-btn i,
+.speed-dial-container:focus-within .speed-dial-main-btn i {
   transform: rotate(18deg) scale(1.1);
 }
 
