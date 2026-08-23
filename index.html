@@ -286,38 +286,42 @@
   <!-- ==========================================================================
        DOCK FLOTANTE DESPLEGABLE EN HOVER (SPEED DIAL COMPACTO)
        ========================================================================== -->
-  <div class="speed-dial-container fixed bottom-6 right-6 z-50 flex flex-col-reverse items-center gap-2.5 no-print">
-    
+  <div class="speed-dial-container fixed bottom-6 right-6 z-50 no-print">
+
     <!-- Botón Principal / Gatillo (Tamaño del Matraz) -->
-    <button id="speed-dial-trigger" title="Herramientas de Aula (Pasa el cursor o haz clic)" 
-            class="speed-dial-main-btn w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-gradient-to-br from-indigo-600 via-blue-600 to-cyan-500 text-yellow-300 flex items-center justify-center shadow-[0_10px_25px_rgba(2,132,199,0.5)] border-2 border-cyan-300 transition-all hover:scale-105 cursor-pointer">
+    <button id="speed-dial-trigger" onclick="toggleSpeedDial(event)" title="Herramientas de Aula (haz clic)"
+            class="speed-dial-main-btn relative z-10 w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-gradient-to-br from-indigo-600 via-blue-600 to-cyan-500 text-yellow-300 flex items-center justify-center shadow-[0_10px_25px_rgba(2,132,199,0.5)] border-2 border-cyan-300 transition-all hover:scale-105 cursor-pointer">
       <i class="fa-solid fa-flask text-xl md:text-2xl transition-transform duration-300"></i>
     </button>
 
-    <!-- Menú Desplegable con las Opciones (Ocultas hasta hacer Hover) -->
-    <div class="speed-dial-menu flex flex-col-reverse items-center gap-2.5">
+    <!-- Menú en Arco de Cuarto de Círculo (Ocultas hasta hacer Hover) -->
+    <div class="speed-dial-menu">
 
-      <!-- Opción 0: Ir al Ecosistema (Home) -->
+      <!-- Opción 0: Ir al Ecosistema (Home) — recta hacia arriba -->
       <button id="floating-home-btn" onclick="collapseSpeedDial(); navigateToSection('intro')" title="Inicio — Ecosistema Escolar"
-              class="speed-dial-sub-btn w-11 h-11 md:w-12 md:h-12 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white flex items-center justify-center shadow-lg border-2 border-emerald-300 transition-all hover:scale-110 cursor-pointer">
+              style="--dx: 0px; --dy: -94px; transition-delay: 0.02s;"
+              class="speed-dial-sub-btn absolute right-0 bottom-0 w-11 h-11 md:w-12 md:h-12 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white flex items-center justify-center shadow-lg border-2 border-emerald-300 transition-all cursor-pointer">
         <i class="fa-solid fa-house text-lg"></i>
       </button>
 
       <!-- Opción 1: Ruleta de Estudiantes -->
       <button id="floating-roulette-btn" onclick="collapseSpeedDial(); openRouletteModal()" title="Ruleta 3ro C (Estudiantes Presentes)" 
-              class="speed-dial-sub-btn w-11 h-11 md:w-12 md:h-12 rounded-xl bg-gradient-to-r from-yellow-500 to-amber-600 hover:from-yellow-400 hover:to-amber-500 text-black flex items-center justify-center shadow-lg border-2 border-yellow-200 transition-all hover:scale-110 cursor-pointer">
+              style="--dx: -47px; --dy: -81px; transition-delay: 0.05s;"
+              class="speed-dial-sub-btn absolute right-0 bottom-0 w-11 h-11 md:w-12 md:h-12 rounded-xl bg-gradient-to-r from-yellow-500 to-amber-600 hover:from-yellow-400 hover:to-amber-500 text-black flex items-center justify-center shadow-lg border-2 border-yellow-200 transition-all cursor-pointer">
         <i class="fa-solid fa-arrows-spin text-lg animate-spin" style="animation-duration: 8s;"></i>
       </button>
 
       <!-- Opción 2: Generador de Equipos -->
       <button id="floating-teams-btn" onclick="collapseSpeedDial(); openTeamsModal()" title="Generador de Equipos (Solo Presentes)" 
-              class="speed-dial-sub-btn w-11 h-11 md:w-12 md:h-12 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white flex items-center justify-center shadow-lg border-2 border-cyan-300 transition-all hover:scale-110 cursor-pointer">
+              style="--dx: -81px; --dy: -47px; transition-delay: 0.08s;"
+              class="speed-dial-sub-btn absolute right-0 bottom-0 w-11 h-11 md:w-12 md:h-12 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white flex items-center justify-center shadow-lg border-2 border-cyan-300 transition-all cursor-pointer">
         <i class="fa-solid fa-users-gear text-lg"></i>
       </button>
 
-      <!-- Opción 3: Trivias STEAM -->
+      <!-- Opción 3: Trivias STEAM — recta hacia la izquierda -->
       <button onclick="collapseSpeedDial(); navigateToSection('quizzes')" title="Trivias STEAM de Aula" 
-              class="speed-dial-sub-btn w-11 h-11 md:w-12 md:h-12 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-700 hover:from-purple-500 hover:to-indigo-600 text-yellow-300 flex items-center justify-center shadow-lg border-2 border-purple-300 transition-all hover:scale-110 cursor-pointer">
+              style="--dx: -94px; --dy: 0px; transition-delay: 0.11s;"
+              class="speed-dial-sub-btn absolute right-0 bottom-0 w-11 h-11 md:w-12 md:h-12 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-700 hover:from-purple-500 hover:to-indigo-600 text-yellow-300 flex items-center justify-center shadow-lg border-2 border-purple-300 transition-all cursor-pointer">
         <i class="fa-solid fa-brain text-lg"></i>
       </button>
 
