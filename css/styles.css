@@ -339,8 +339,7 @@ h1, h2, h3, h4, h5, h6 {
   pointer-events: auto;
 }
 
-.speed-dial-container:hover .speed-dial-main-btn i,
-.speed-dial-container:focus-within .speed-dial-main-btn i {
+.speed-dial-container.is-open .speed-dial-sub-btn {
   transform: rotate(18deg) scale(1.1);
 }
 
