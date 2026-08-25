@@ -28,7 +28,7 @@ const MINERD_GUIDE_DATA = {
       fullDay: true,
       timeFrame: "09:00 AM a 04:00 PM (Jornada Completa • Receso: 12:25 - 01:40 PM)",
       motto: "«Capacidad de encontrar dulzura incluso en situaciones difíciles y de movernos en todas las direcciones sin chocar con los demás.»",
-      intention: "El docente presenta la intención pedagógica: Fomentar acciones que ayuden a establecer espacios armoniosos, seguros y reflexivos que promuevan relaciones saludables basadas en el respeto mutuo, motivando la integración activa de cada estudiante.",
+      intention: " Fomentar acciones que ayuden a establecer espacios armoniosos, seguros y reflexivos que promuevan relaciones saludables basadas en el respeto mutuo, motivando la integración activa de cada estudiante.",
       scheduleBlocks: [
         {
           time: "08:00 - 09:00 AM",
@@ -139,7 +139,7 @@ const MINERD_GUIDE_DATA = {
       fullDay: false,
       timeFrame: "08:00 AM a 09:30 AM (2 Horas Pedagógicas de 45 min)",
       motto: "«Su colaboración genera eficiencia. Una sola abeja no hace la colmena, necesitan orden, dulzura y trabajo constante.»",
-      intention: "El docente presenta la intención pedagógica: Desarrollar el trabajo colaborativo y reconocer la importancia del esfuerzo individual para el bienestar colectivo a través de la metáfora de la colmena.",
+      intention: " Desarrollar el trabajo colaborativo y reconocer la importancia del esfuerzo individual para el bienestar colectivo a través de la metáfora de la colmena.",
       activities: [
         {
           title: "Actividad 1: La Colmena de Respeto (Construcción del Panal)",
@@ -191,7 +191,7 @@ const MINERD_GUIDE_DATA = {
       fullDay: false,
       timeFrame: "08:00 AM a 09:30 AM (2 Horas Pedagógicas de 45 min)",
       motto: "«Su metamorfosis nos recuerda que todos tenemos el potencial de transformarnos, mejorar y dejar atrás aquello que nos limita.»",
-      intention: "El docente presenta la intención pedagógica: Motivar la autorregulación emocional, el autoconcepto saludable y la capacidad de transformar los conflictos en oportunidades de aprendizaje.",
+      intention: " Motivar la autorregulación emocional, el autoconcepto saludable y la capacidad de transformar los conflictos en oportunidades de aprendizaje.",
       activities: [
         {
           title: "Actividad 1: Alas que Sanan (Metamorfosis Personal)",
@@ -239,7 +239,7 @@ const MINERD_GUIDE_DATA = {
       fullDay: false,
       timeFrame: "08:00 AM a 09:30 AM (2 Horas Pedagógicas de 45 min)",
       motto: "«No importa la velocidad, sino la constancia y el apoyo mutuo. Llegar primero no es tan importante como saber llegar.»",
-      intention: "El docente presenta la intención pedagógica: Fomentar la paciencia, el respeto a la diversidad y la resiliencia ante los desafíos académicos y personales.",
+      intention: " Fomentar la paciencia, el respeto a la diversidad y la resiliencia ante los desafíos académicos y personales.",
       activities: [
         {
           title: "Actividad 1: El Camino de la Tortuga (Mapa de Metas & Caparazón)",
@@ -288,7 +288,7 @@ const MINERD_GUIDE_DATA = {
       fullDay: false,
       timeFrame: "08:00 AM a 09:30 AM (2 Horas Pedagógicas de 45 min)",
       motto: "«En los grandes logros nunca hay una sola persona, hay un equipo coordinado. La disciplina no es castigo, es organización para el bien común.»",
-      intention: "El docente presenta la intención pedagógica: Consolidar la red de apoyo escolar y familiar mediante la corresponsabilidad y el trabajo coordinado.",
+      intention: " Consolidar la red de apoyo escolar y familiar mediante la corresponsabilidad y el trabajo coordinado.",
       activities: [
         {
           title: "Actividad 1: La Red de Apoyo (Dinámica con Lana & Familias)",
