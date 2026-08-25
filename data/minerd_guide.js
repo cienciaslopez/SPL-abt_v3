@@ -131,7 +131,7 @@ const MINERD_GUIDE_DATA = {
       id: "martes",
       dayName: "Martes — Día 2",
       symbol: "La Abeja",
-      emoji: "",
+      emoji: "🐝",
       value: "Cooperación, Constancia y Orden",
       theme: "Normas de Convivencia y Clima Escolar",
       badgeColor: "bg-amber-500",
